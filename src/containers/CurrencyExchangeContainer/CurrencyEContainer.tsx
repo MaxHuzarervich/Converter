@@ -42,7 +42,7 @@ const CurrencyEContainer: React.FC<TProps> = props => {
         amountOfCurrency,
     } = props;
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<Dispatch<CurrencyReducersTypes>>()
 
     let currencyRate: number = 0; //пробегаемся по массиву валют
     const currenciesName = currencies.map((currency: CurrencyType) => {

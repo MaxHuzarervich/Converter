@@ -18,8 +18,8 @@ const initialState: CurrencyState = {
     currencies: [
         {
             currencyName: 'USD',
-            buyRate: 2.62,
-            sellRate: 2.58,
+            buyRate: 2.60,
+            sellRate: 2.50,
         },
         {
             currencyName: 'EUR',
