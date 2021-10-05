@@ -24,6 +24,22 @@ console.log('lesson 2');
 // Task 01
 // Реализовать функцию sum которая суммирует 2 числа следующим образом sum(3)(6) === 9
 
+function sum (n:number) {
+    let sumScope = {
+      outerScope = globalScope,
+      n: 3,
+      anonim: 'Function',
+    };
+return function (n2: number) {
+    let anonimScope = {
+        outerScope = globalScope,
+        n: 6,
+    }
+return n + n2;
+}
+}
+
+console.log(sum(3)(6))
 // Task 02
 // Реализовать функцию makeCounter которая работает следующим образом:
 // const counter = makeCounter();
@@ -32,6 +48,19 @@ console.log('lesson 2');
 // const counter2 = makeCounter();
 // counter2(); // 1
 // counter(); // 3
+
+function makeCounter () {
+    let count = 0;
+    return function () {
+        return ++count
+    }
+}
+const counter = makeCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+const counter2 = makeCounter();
+console.log(counter2()); // 1
+console.log(counter()); // 3
 
 // Task 03
 // Переписать функцию из Task 02 так, что бы она принимала число в качестве аргумента и это число было стартовым значением счетчика
@@ -51,13 +80,53 @@ console.log('lesson 2');
 // 5) superSum(3)(2,5)(3) //10
 // 6) superSum(3)(2,5)(3,9) //10
 
+function superSum(num:number){
+    if(num <= 0) return 0;
+    if(num === 1) return (n:number) => n;
+
+    let _arguments: number[] = [];
+
+    function helper(...args:number[]){  //мы можем принять любое количество аргументов
+    _arguments = [..._arguments, ...args];
+    if(_arguments.length >= num){
+        _arguments.length = num;
+    return _arguments.reduce((acc, number) => acc + number)
+    }else {
+        return helper;
+    }
+    }
+    return helper;
+}
+
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
 
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
+
+// sumTo(1) = 1
+// sumTo(2) = 2 + 1 = 3
+// sumTo(3) = 3 + 2 + 1 = 6
+// sumTo(4) = 4 + 3 + 2 + 1 = 10
+// ...
+// sumTo(100) = 100 + 99 + ... + 2 + 1 = 5050
+
+// function sumTo(n:any){
+//     let result = 0;
+//     // for(let i = 0; i <= n; i++){
+//     //     result += i
+//     // }
+//     for( i = 0; i <= n; i++) result += i
+//     return result
+// }
+function sumTo(n:any):number{         // 1 - должна быть точка выхода из рекурсии
+   if( n === 1 ) return n;
+   return n + sumTo(n - 1);        // 2 - функция должна вызывать сама себя c новыми аргументами
+}
+console.log(sumTo(100))
 
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
 // just a plug
 export default () => {};
+
