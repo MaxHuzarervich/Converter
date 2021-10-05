@@ -26,13 +26,13 @@ console.log('lesson 2');
 
 function sum (n:number) {
     let sumScope = {
-      outerScope = globalScope,
+      // outerScope = globalScope,
       n: 3,
       anonim: 'Function',
     };
 return function (n2: number) {
     let anonimScope = {
-        outerScope = globalScope,
+        // outerScope = globalScope,
         n: 6,
     }
 return n + n2;
