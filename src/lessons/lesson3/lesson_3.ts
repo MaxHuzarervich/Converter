@@ -94,20 +94,15 @@ prom
         throw 300500;
         console.log('then result', result)
     })
-    .then (null,err => {
-        console.log('then err', err);
-        throw 100500;
-        return err + 10
+    .catch(err => {
+        console.log('catch err', err);
+        throw 500500;
     })
     .then(result2 => {
         console.log('then result2', result2)
     })
-    // .then(null, err2 => {
-    //     console.log('then err2', err2);
-    //     throw 500500;
-    // })
     .catch(err2 => {
-        console.log('then err2', err2);
+        console.log('catch err2', err2);
         throw 500500;
     })
 
