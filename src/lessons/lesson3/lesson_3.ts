@@ -1,3 +1,5 @@
+import {log} from "util";
+
 console.log('lesson 3');
 
 // Event loop
@@ -83,29 +85,88 @@ console.log('lesson 3');
 //         throw 500500;
 //     })
 
+// let prom = new Promise((resolve, reject) => {
+//     let a = 0;
+//     //some async request
+//     resolve(a);
+//     // reject(0)
+// })
+// prom
+//     .then(result => {
+//         console.log('then result', result)
+//     })
+//     .catch(err => {
+//         console.log('catch err', err);
+//         throw 500500;
+//     })
+//     .then(result2 => {
+//         console.log('then result2', result2)
+//         throw 'Yo'
+//     })
+//     .catch(err2 => {
+//         console.log('catch err2', err2);
+//         throw 500500;
+//     })
+//     .catch(err3 => {
+//         console.log('catch err3', err3);
+//     })
+
+// let prom = new Promise((resolve, reject) => {
+//     let a = 0;
+//     //some async request
+//     // resolve(a);
+//     reject(0)
+// })
+// prom
+//     .then(result => {
+//         console.log('then result', result)
+//     })
+//     .then(result2 => {
+//         console.log('then result2', result2)
+//         throw 'Yo'
+//     })
+//     .catch(err => {
+//         console.log('catch err', err);
+//     })
+
+// let prom = new Promise((resolve, reject) => {
+//     let a = 0;
+//     //some async request
+//     resolve(a);
+//     // reject(0)
+// })
+// prom.then(console.log)
+
+// try {
+//     let prom = new Promise((resolve, reject) => {
+//         let a = 0;
+//         //some async request
+//         // resolve(a);
+//         reject(10)
+//     })
+//     prom.then(console.log)
+// } catch (e) {
+//     console.log(e)
+// }
+
 let prom = new Promise((resolve, reject) => {
     let a = 0;
     //some async request
-    // resolve(a);
-    reject(0)
+    resolve(a);
+    // reject(0)
 })
 prom
     .then(result => {
-        throw 300500;
         console.log('then result', result)
     })
     .catch(err => {
         console.log('catch err', err);
-        throw 500500;
     })
-    .then(result2 => {
-        console.log('then result2', result2)
-    })
-    .catch(err2 => {
-        console.log('catch err2', err2);
-        throw 500500;
+    .finally(() => {
+        console.log('finally', 'YoYo');      // к примеру для выключения спиннера после загрузки
     })
 
+// console.dir(Promise)
 
 // just a plug
 export default () => {
