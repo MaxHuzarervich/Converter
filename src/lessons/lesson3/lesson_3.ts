@@ -149,8 +149,27 @@ console.log('lesson 3');
 //     console.log(e)
 // }
 
+// let prom = new Promise((resolve, reject) => {
+//     let a = 0;
+//     //some async request
+//     resolve(a);
+//     // reject(0)
+// })
+// prom
+//     .then(result => {
+//         console.log('then result', result)
+//     })
+//     .catch(err => {
+//         console.log('catch err', err);
+//     })
+//     .finally(() => {
+//         console.log('finally', 'YoYo');      // к примеру для выключения спиннера после загрузки
+//     })
+
+let a = 10
+
 let prom = new Promise((resolve, reject) => {
-    let a = 0;
+    let c = 10;
     //some async request
     resolve(a);
     // reject(0)
@@ -159,12 +178,16 @@ prom
     .then(result => {
         console.log('then result', result)
     })
-    .catch(err => {
-        console.log('catch err', err);
-    })
-    .finally(() => {
-        console.log('finally', 'YoYo');      // к примеру для выключения спиннера после загрузки
-    })
+
+setTimeout(() => {}, 1000)
+
+    let b = 50;
+
+Promise.resolve(10).then()  //для тестирования
+Promise.reject(0).then().catch() //для тестирования
+Promise.all([p1, p2, p3]).then([]).catch()  //ждем пока все промисы зарезолвятся
+Promise.allSettled([p1, p2, p3]).then([])
+Promise.race([p1, p2, p3]).then([]).catch() // берет только самый первый промис, без разницы либо режект или резолве
 
 // console.dir(Promise)
 
