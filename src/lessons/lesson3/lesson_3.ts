@@ -187,8 +187,9 @@ Promise.resolve(10).then()  //для тестирования
 Promise.reject(0).then().catch() //для тестирования
 Promise.all([p1, p2, p3]).then([]).catch()  //ждем пока все промисы зарезолвятся
 Promise.allSettled([p1, p2, p3]).then([])
-Promise.race([p1, p2, p3]).then([]).catch() // берет только самый первый промис, без разницы либо режект или резолве
-
+Promise.race([p1, p2, p3]).then([]).catch() // берет только самый первый промис, без разницы либо режект или резолве,
+// остальные игнорируются
+Promise.any([p1, p2, p3]).then()//берет только первый зарезолвенный промис
 // console.dir(Promise)
 
 // just a plug
